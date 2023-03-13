@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.models.CPU;
+import java.util.*
 
 public class Calculator {
 	private CPU cpu;
@@ -19,9 +20,9 @@ public class Calculator {
 	}
 
 	public boolean run(){
-		list_size = mnemonic_list.size();
+		int list_size = mnemonic_list.size();
 		for(int i = 0; i < list_size; i++) {
-			mnemonic m = mnenomic_list.get(i);
+			mnemonic m = mnemonic_list.get(i);
 			if(asm.getMnemonic().equals(m)) {
 				try {
 					return m.exec(asm.getTerms());

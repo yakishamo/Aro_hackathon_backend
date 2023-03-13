@@ -1,5 +1,5 @@
 package com.example.demo;
-import java.util.Array;
+import java.util.*;
 
 abstract class mnemonic {
 	protected String name;
