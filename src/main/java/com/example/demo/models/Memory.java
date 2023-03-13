@@ -13,10 +13,8 @@ public class Memory {
 	public long read(int addr, int size) throws ArrayIndexOutOfBoundsException {
 		long ret = 0;
 		for(int i = 0; i < size; i++) {
-			System.out.printf("    ret : %x\n", ret);
 			ret += (memory[addr + i] << (8*i)) & (0xffffffffffffffffL >>> (56 - 8*i));
 		}
-		System.out.printf("    ret : %x\n", ret);
 		return ret;
 	}
 

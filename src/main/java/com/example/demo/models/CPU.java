@@ -1,24 +1,6 @@
 package com.example.demo.models;
 import java.util.*;
 
-abstract class mnemonic {
-	protected String name;
-	private CPU cpu;
-	public String toString() {
-		return this.name;
-	}
-	public abstract boolean exec(String arg1, String arg2); //success...true fail...false
-}
-
-class nop extends mnemonic {
-	nop() {
-		name = "nop";
-	}
-	public boolean exec(String arg1, String arg2) {
-		System.out.print("nop.");
-		return true;
-	}
-}
 
 public class CPU {
 	public CPU(){
@@ -61,12 +43,43 @@ public class CPU {
 	private Rflags rflags;
 	private long rip;
 	private Memory memory;
-	private ArrayList<mnemonic> mnemonic_list = new ArrayList<mnemonic>();
 
-	public void regist_mnemonic(mnemonic m) {
-		mnemonic_list.add(m);
+	public Register select_register(String s) {
+		if(s.matches("((r*|e*)ax)|ah|al)")) {
+			return rax.setByName(s);
+		} else if(s.matches("((r*|e*)bx)|ah|al)")) {
+			return rbx.setByName(s);
+		} else if(s.matches("((r*|e*)cx)|ch|cl)")) {
+			return rcx.setByName(s);
+		} else if(s.matches("((d*|d*)dx)|dh|dl)")) {
+			return rdx.setByName(s);
+		} else if(s.matches("((r*|e*)si)|sil")) {
+			return rsi.setByName(s);
+		} else if(s.matches("((r*|e*)di)|dil")) {
+			return rdi.setByName(s);
+		} else if(s.matches("((r*|e*)bp)|bpl")) {
+			return rbp.setByName(s);
+		} else if(s.matches("((r*|e*)sp)|spl")) {
+			return rsp.setByName(s);
+		} else if(s.matches("r8(d*|w*|b*)")) {
+			return r8.setByName(s);
+		} else if(s.matches("r9(d*|w*|b*)")) {
+			return r9.setByName(s);
+		} else if(s.matches("r10(d*|w*|b*)")) {
+			return r10.setByName(s);
+		} else if(s.matches("r11(d*|w*|b*)")) {
+			return r11.setByName(s);
+		} else if(s.matches("r12(d*|w*|b*)")) {
+			return r12.setByName(s);
+		} else if(s.matches("r13(d*|w*|b*)")) {
+			return r13.setByName(s);
+		} else if(s.matches("r14(d*|w*|b*)")) {
+			return r14.setByName(s);
+		} else if(s.matches("r15(d*|w*|b*)")) {
+			return r15.setByName(s);
+		} else {
+			return null;
+		}
 	}
 }
-
-
 
