@@ -21,7 +21,7 @@ public class asmController {
         String[] terms = asm.getMnemonic().split("_");
         asm.setTerms(terms);
         CPU cpu = new CPU();
-        Calculater c = new  Calculater(cpu, asm);
+        Calculator c = new  Calculator(cpu, asm);
         c.run();
         Result r = new Result();
         r.setRegister();
