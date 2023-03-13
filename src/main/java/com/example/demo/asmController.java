@@ -9,15 +9,21 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class asmController {
     @RequestMapping("/asm/{mnemonic}")
-    public Assembly read(@PathVariable String mnemonic){
-        Assembly asm = new Assembly();
+    public Result read(@PathVariable String mnemonic){
+        Assembly asm = new Assembly(); 
         if(mnemonic.equals("") || mnemonic == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found"); 
         }
         asm.setMnemonic(mnemonic);
-        String[] terms = asm.getMnemonic().split(", ");
+        String[] terms = asm.getMnemonic().split("_");
         asm.setTerms(terms);
-        return asm;
+        CPU cpu = new CPU();
+        Calculater c = Calculater(CPU cpu, Memory memory, Assembly asm);
+        c.run();
+        Result r = new Result();
+        r.setRegister();
+        r.setRegister();
+        return r;
     }
 
 }

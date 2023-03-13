@@ -10,4 +10,12 @@ import lombok.NoArgsConstructor;
 public class Assembly {
     private String mnemonic;
     private String[] terms;
+
+    public String getMnemonic(){
+        return this.mnemonic;
+    }
+
+    public void setMnemonic(String mnemonic){
+        this.mnemonic = mnemonic;
+    }
 }
