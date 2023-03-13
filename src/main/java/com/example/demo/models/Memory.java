@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 class Memory {
 	private int memory_size;
-	public byte [] memory;
+	private byte [] memory;
 
 	Memory(int memory_size) {
 		this.memory_size = memory_size;

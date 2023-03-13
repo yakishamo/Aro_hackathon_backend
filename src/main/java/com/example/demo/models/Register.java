@@ -11,6 +11,13 @@ class Register {
 		bit_size = 64;
 		upper = false;
 	}
+
+	Register(String name, long reg) {
+		this.name = name;
+		bit_size = 64;
+		upper = false;
+		this.reg = reg;
+	}
 	
 	public long toInt() {
 		if(upper && bit_size == 8) {
