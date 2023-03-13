@@ -24,8 +24,8 @@ public class asmController {
         Calculator c = new  Calculator(cpu, asm);
         c.run();
         Result r = new Result();
-        r.setRegister();
-        r.setRegister();
+        r.setRegister(cpu);
+        r.setRegister(cpu);
         return r;
     }
 

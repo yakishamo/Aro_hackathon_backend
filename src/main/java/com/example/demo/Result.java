@@ -12,14 +12,11 @@ public class Result {
     private String[] register;
     private String[] memory;
 
-    public Result(CPU cpu){
-                
-    }
-    public void setRegister(){
-        
+
+    public void setRegister(CPU cpu){    
     }
 
-    public void setMemory(){
+    public void setMemory(CPU cpu){
 
     }
 
