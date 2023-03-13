@@ -25,7 +25,7 @@ public class Calculator {
 			mnemonic m = mnemonic_list.get(i);
 			if(asm.getMnemonic().equals(m)) {
 				try {
-					return m.exec(asm.getTerms());
+					return m.exec(asm.getTerms(), cpu);
 				} catch (Exception e) {
 					return false;
 				}

@@ -20,11 +20,11 @@ public class asmController {
         String[] terms = asm.getMnemonic().split("_");
         asm.setTerms(terms);
         CPU cpu = new CPU();
-        Calculator c = new  Calculator(cpu, asm);
+        Calculator c = new Calculator(cpu, asm);
         c.run();
         Result r = new Result();
         r.setRegister(cpu);
-        r.setRegister(cpu);
+        r.setMemory(cpu);
         return r;
     }
 

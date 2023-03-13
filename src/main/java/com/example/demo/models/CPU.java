@@ -52,6 +52,7 @@ public class CPU {
 		return memory;
 	}
 	public Register select_register(String s) {
+		System.out.print(s);
 		if(s.matches("((r*|e*)ax)|ah|al")) {
 			return rax.setByName(s);
 		} else if(s.matches("((r*|e*)bx)|ah|al")) {
