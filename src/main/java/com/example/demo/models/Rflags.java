@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-class Rflags {
+public class Rflags {
 	Rflags() {
 		cf = pf = af = zf = sf = tf = intf = df = of = iopl_1 = iopl_2 = 
 		nt = rf = vm = ac = vif = vip = id = 0;

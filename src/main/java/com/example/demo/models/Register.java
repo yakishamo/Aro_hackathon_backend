@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-class Register {
+public class Register {
 	protected long reg;
 	protected String name;
 	protected int bit_size;
@@ -27,7 +27,7 @@ class Register {
 	}
 
 	public String toString() {
-		return reg.toString();
+		return String.valueOf(reg);
 	}
 
 	public Register setBitsize(int bit) {
