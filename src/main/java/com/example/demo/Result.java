@@ -13,11 +13,11 @@ public class Result {
     private String[] memory;
 
 
-    public void setRegister(CPU cpu){    
+    public void setRegister(CPU cpu){
+			cpu.
     }
 
     public void setMemory(CPU cpu){
-
     }
 
     

@@ -26,6 +26,10 @@ class Register {
 		return reg & (0xffffffff >>> (64-bit_size));
 	}
 
+	public String toString() {
+		return reg.toString();
+	}
+
 	public Register setBitsize(int bit) {
 		if(bit > 64 || bit < 0) bit = 64;
 		bit_size = bit;
