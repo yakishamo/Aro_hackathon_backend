@@ -20,8 +20,8 @@ class nop extends mnemonic {
 	}
 }
 
-class CPU {
-	CPU(){
+public class CPU {
+	public CPU(){
 		rax = new Register("a");
 		rbx = new Register("b");
 		rcx = new Register("c");

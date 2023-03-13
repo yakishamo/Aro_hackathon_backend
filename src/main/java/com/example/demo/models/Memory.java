@@ -1,6 +1,6 @@
 package com.example.demo.models; 
 
-class Memory {
+public class Memory {
 	private int memory_size;
 	private byte [] memory;
 

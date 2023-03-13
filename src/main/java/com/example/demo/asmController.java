@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.models.CPU;
+import com.example.demo.models.Memory;
+
 @RestController
 public class asmController {
     @RequestMapping("/asm/{mnemonic}")
@@ -18,7 +21,7 @@ public class asmController {
         String[] terms = asm.getMnemonic().split("_");
         asm.setTerms(terms);
         CPU cpu = new CPU();
-        Calculater c = Calculater(CPU cpu, Memory memory, Assembly asm);
+        Calculater c = new  Calculater(cpu, asm);
         c.run();
         Result r = new Result();
         r.setRegister();
