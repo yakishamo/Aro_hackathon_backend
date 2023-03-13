@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.models.CPU;
-import com.example.demo.models.Memory;
 
 @RestController
 public class asmController {
