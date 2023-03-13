@@ -1,9 +1,20 @@
 package com.example.demo.models;
+import java.util.*;
 
-class mnemonic {
+abstract class mnemonic {
 	protected String name;
 	public String toString() {
 		return this.name;
+	}
+	public abstract boolean exec(String arg1, String arg2); //success...true fail...false
+}
+
+class nop extends mnemonic {
+	nop() {
+		name = "nop";
+	}
+	public boolean exec(String arg1, String arg2) {
+		return true;
 	}
 }
 
@@ -26,5 +37,10 @@ class CPU {
 	protected Register r15 = new Register("15");
 	protected long rip = 0;
 	protected Memory memory = new Memory(0x100);
+	protected ArrayList<mnemonic> mnemonic_list = new ArrayList<mnemonic>();
+	
+	public void regist_mnemonic(mnemonic m) {
+		mnemonic_list.add(m);
+	}
 }
 
