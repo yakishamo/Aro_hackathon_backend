@@ -41,6 +41,16 @@ public class CPU {
 	private Rflags rflags;
 	private long rip;
 	private Memory memory;
+	
+	public long getRip() {
+		return rip;
+	}
+	public Rflags getRflags() {
+		return rflags;
+	}
+	public Memory getMemory() {
+		return memory;
+	}
 	public Register select_register(String s) {
 		if(s.matches("((r*|e*)ax)|ah|al)")) {
 			return rax.setByName(s);

@@ -9,6 +9,10 @@ public class Memory {
 		memory = new byte[memory_size];
 	}
 	
+	public int getMemorysize() {
+		return memory_size;
+	}
+
 	//size is specified in bytes
 	public long read(int addr, int size) throws ArrayIndexOutOfBoundsException {
 		long ret = 0;
