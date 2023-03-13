@@ -1,5 +1,12 @@
 package com.example.demo.models;
 
+class mnemonic {
+	protected String name;
+	public String toString() {
+		return this.name;
+	}
+}
+
 class CPU {
 	protected Register rax = new Register("a");
 	protected Register rbx = new Register("b");
