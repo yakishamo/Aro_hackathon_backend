@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.models.CPU;
-import java.util.*
+import java.util.*;
 
 public class Calculator {
 	private CPU cpu;
