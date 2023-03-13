@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Assembly {
-    private String parm;
+    private String mnemonic;
     private String[] terms;
 }
