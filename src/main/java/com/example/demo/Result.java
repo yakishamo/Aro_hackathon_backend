@@ -25,6 +25,9 @@ public class Result {
 			isSuccess = b;
 		}
 
+		public boolean getIsSuccess(){
+			return this.isSuccess;
+		}
     public void setRegister(CPU cpu){
 			try{
 			register.add(cpu.select_register("rax").toString());
