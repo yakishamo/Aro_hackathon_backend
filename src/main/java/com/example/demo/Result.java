@@ -14,11 +14,17 @@ public class Result {
 
     private ArrayList<String> register;
     private ArrayList<String> memory;
+		private boolean isSuccess;
 
 		Result() {
 			register = new ArrayList<String>();
 			memory = new ArrayList<String>();
 		}
+
+		public void setIsSuccess(boolean b) {
+			isSuccess = b;
+		}
+
     public void setRegister(CPU cpu){
 			try{
 			register.add(cpu.select_register("rax").toString());
