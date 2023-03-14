@@ -31,7 +31,7 @@ public class Register {
 	}
 
 	public String toString() {
-		return String.valueOf(Long.toUnsignedString(toInt()));
+		return String.valueOf(toInt());
 	}
 
 	public Register setBitsize(int bit) {

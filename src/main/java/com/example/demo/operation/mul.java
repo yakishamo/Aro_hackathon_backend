@@ -32,11 +32,11 @@ public class mul extends mnemonic {
 			cpu.select_register("ax").setVal(res_lower64);
 			cpu.select_register("dx").setVal(res_lower64 >>> 16);
 		} else if(bit_size == 32) {
-			cpu.select_register("edx").setVal(res_lower64);
-			cpu.select_register("eax").setVal(res_lower64 >>> 32);
+			cpu.select_register("eax").setVal(res_lower64);
+			cpu.select_register("edx").setVal(res_lower64 >>> 32);
 		} else if(bit_size == 64) {
-			cpu.select_register("rdx").setVal(res_lower64);
-			cpu.select_register("rax").setVal(res_upper64);
+			cpu.select_register("rax").setVal(res_lower64);
+			cpu.select_register("rdx").setVal(res_upper64);
 		}
 		return true;
 	}
