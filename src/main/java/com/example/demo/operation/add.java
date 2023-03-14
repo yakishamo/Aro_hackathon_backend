@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.example.demo.operation;
 import com.example.demo.models.Register;
 import com.example.demo.models.CPU;
 import com.example.demo.models.Rflags;
 import java.util.*;
 
-class add extends mnemonic {
+public class add extends mnemonic {
 	add() {
 		name = "add";
 	}
@@ -14,15 +14,26 @@ class add extends mnemonic {
 		Register reg = cpu.select_register(r);
 		if(reg == null) return false;
 		long reg_val = reg.toInt();
-		reg_val += im;
-		reg.setVal(reg_val);
+		long res = reg_val + im;
+		reg.setVal(res);
+		Rflags f = cpu.getRflags();
+		if(res == 0) f.setZF(true);
+		else f.setZF(false);
+		if((res >>> (reg.getBytesize()-1)) == 1) f.setSF(true);
+		else f.setSF(false);
 		return true;
 	}
 	private boolean add_r_r(String r1, String r2) {
 		Register reg1 = cpu.select_register(r1);
 		Register reg2 = cpu.select_register(r2);
 		if(reg1 == null || reg2 == null) return false;
-		reg1.setVal(reg1.toInt() + reg2.toInt());
+		long res = reg1.toInt() + reg2.toInt();
+		reg1.setVal(res);
+		Rflags f = cpu.getRflags();
+		if(res == 0) f.setZF(true);
+		else f.setZF(false);
+		if((res >>> (reg1.getBytesize()-1)) == 1) f.setSF(true);
+		else f.setSF(false);
 		return true;
 	}
 	private boolean add_m_r(String [] m, String r) {
@@ -43,9 +54,17 @@ class add extends mnemonic {
 		Register reg1 = cpu.select_register(reg_name);
 		Register reg2 = cpu.select_register(r);
 		if(reg1 == null || reg2 == null) return false;
-		int mem_val = (int)cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
-		int reg_val = (int)reg2.toInt();
-		cpu.getMemory().write((int)reg1.toInt(), byte_size, mem_val + reg_val);
+		long mem_val = cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
+		long reg_val = reg2.toInt();
+		long res = mem_val + reg_val;
+		cpu.getMemory().write((int)reg1.toInt(), byte_size, res);
+		//フラグレジスタの設定
+		Rflags f = cpu.getRflags();
+		if(res == 0) f.setZF(true);
+		else f.setZF(false);
+		if((res >>> (byte_size*8-1)) == 1) f.setSF(true);
+		else f.setSF(false);
+		
 		return true;
 	}
 	private boolean add_r_m(String r, String [] m) {
@@ -66,9 +85,15 @@ class add extends mnemonic {
 		Register reg1 = cpu.select_register(reg_name);
 		Register reg2 = cpu.select_register(r);
 		if(reg1 == null || reg2 == null) return false;
-		int mem_val = (int)cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
-		int reg_val = (int)reg2.toInt();
-		reg2.setVal(mem_val + reg_val);
+		long mem_val = cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
+		long reg_val = reg2.toInt();
+		long res = mem_val + reg_val;
+		reg2.setVal(res);
+		Rflags f = cpu.getRflags();
+		if(res == 0) f.setZF(true);
+		else f.setZF(false);
+		if((res >>> (byte_size*8-1)) == 1) f.setSF(true);
+		else f.setSF(false);
 		return true;
 	}
 	private boolean add_m_im(String [] m, long im) {
@@ -88,8 +113,14 @@ class add extends mnemonic {
 		String reg_name = m[2].substring(1,m[2].length()-1);
 		Register reg1 = cpu.select_register(reg_name);
 		if(reg1 == null) return false;
-		int mem_val = (int)cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
-		cpu.getMemory().write((int)reg1.toInt(), byte_size, mem_val + im);
+		long mem_val = cpu.getMemory().read((int)reg1.toInt(), byte_size); //addr, size
+		long res = mem_val + im;
+		cpu.getMemory().write((int)reg1.toInt(), byte_size, res);
+		Rflags f = cpu.getRflags();
+		if(res == 0) f.setZF(true);
+		else f.setZF(false);
+		if((res >>> (byte_size*8-1)) == 1) f.setSF(true);
+		else f.setSF(false);
 		return true;
 	}
 	

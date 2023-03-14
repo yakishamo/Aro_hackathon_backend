@@ -1,6 +1,9 @@
 package com.example.demo;
 
 import com.example.demo.models.CPU;
+import com.example.demo.operation.mnemonic;
+import com.example.demo.operation.add;
+import com.example.demo.operation.nop;
 import java.util.*;
 
 public class Calculator {
