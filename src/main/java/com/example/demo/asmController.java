@@ -13,7 +13,7 @@ import com.example.demo.models.CPU;
 
 @RestController
 public class asmController {
-    @CrossOrigin(origins = "https://kachikachi.net/brainfuck/")
+    @CrossOrigin
     @PostMapping("/asm")
     public Result read(@RequestBody Assembly asm){
 				System.out.printf("in Result\n");
