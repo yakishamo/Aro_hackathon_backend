@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.example.demo.models.CPU;
 
 @RestController
 public class asmController {
+    @CrossOrigin(origins = "https://kachikachi.net/brainfuck/")
     @PostMapping("/asm")
     public Result read(@RequestBody Assembly asm){
 				System.out.printf("in Result\n");
