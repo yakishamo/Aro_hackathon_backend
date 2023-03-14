@@ -19,8 +19,7 @@ public class asmController {
     @CrossOrigin
     @PostMapping("/asm")
     public Result read(@RequestBody Assembly asm){
-				System.out.printf("in Result\n");
-        if(asm.equals("") || asm == null){
+        if(asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
 
