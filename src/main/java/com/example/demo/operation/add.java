@@ -5,7 +5,7 @@ import com.example.demo.models.Rflags;
 import java.util.*;
 
 public class add extends mnemonic {
-	add() {
+	public add() {
 		name = "add";
 	}
 	private CPU cpu;
@@ -125,9 +125,11 @@ public class add extends mnemonic {
 	}
 	
 	public boolean exec(String [] args, CPU cpu) {
+		System.out.printf("add.exec called.\n");
+		System.out.printf("%s %s\n", args[0], args[1]);
 		this.cpu = cpu;
-		if(!(args[0].matches("((Q*|D*)WORD)|(BYTE))"))) {
-			if((args[1].matches("((Q*|D*)WORD)|(BYTE))"))) {
+		if(!(args[0].matches("((Q*|D*)WORD)|(BYTE)"))) {
+			if((args[1].matches("((Q*|D*)WORD)|(BYTE)"))) {
 				try {
 					return add_r_m(args[0], Arrays.copyOfRange(args, 1, 4));
 				} catch (Exception e) {

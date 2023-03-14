@@ -18,7 +18,7 @@ public class asmController {
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
         
-        String[] terms = asm.getMnemonic().split("[, ]");
+        String[] terms = asm.getMnemonic().split("[, ]+");
         asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
 				asm.setMnemonic(terms[0]);
 				Result r = new Result();
