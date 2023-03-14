@@ -20,6 +20,8 @@ public class Calculator {
 		regist_mnemonic(new mov());
 		regist_mnemonic(new xchg());
 		regist_mnemonic(new mul());
+		regist_mnemonic(new div());
+		regist_mnemonic(new cmp());
 	}
 
 	public void regist_mnemonic(mnemonic m) {
