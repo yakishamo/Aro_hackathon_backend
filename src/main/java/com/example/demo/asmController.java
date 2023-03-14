@@ -66,7 +66,9 @@ public class asmController {
                         return r;
                     }
             Calculator c = new Calculator(cpu, asm);
-            r.setIsSuccess(c.run());            
+            r.setIsSuccess(c.run());
+            r.setRegister(cpu);
+            r.setMemory(cpu);
             if(r.getIsSuccess() == false){
                 break;
             }
