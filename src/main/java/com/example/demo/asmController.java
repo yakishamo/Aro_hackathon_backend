@@ -76,7 +76,8 @@ public class asmController {
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
             if(r.getIsSuccess() == false){
-                break;
+                
+                throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "構文エラー");
             }
             if(cpu.getRip().toInt() > asm.getMnemonics().length){
                 r.setRegister(cpu);
