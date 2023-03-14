@@ -63,10 +63,13 @@ public class asmController {
                     }
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
-            r.setRegister(cpu);
-            r.setMemory(cpu);
             if(r.getIsSuccess() == false){
                 break;
+            }
+            if(i == asm.getMnemonics().length-1){
+                r.setRegister(cpu);
+                r.setMemory(cpu);
+                    
             }
         }
         return r;
