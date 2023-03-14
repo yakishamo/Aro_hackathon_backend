@@ -13,7 +13,7 @@ import com.example.demo.models.CPU;
 public class asmController {
     @RequestMapping("/asm")
     public Result read(@RequestBody Assembly asm){
-
+				System.out.printf("in Result\n");
         if(asm.equals("") || asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
@@ -21,13 +21,18 @@ public class asmController {
         String[] terms = asm.getMnemonic().split("[, ]");
         asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
 				asm.setMnemonic(terms[0]);
-        CPU cpu = new CPU();
 				Result r = new Result();
+				CPU cpu;
+				try {
+        	cpu = new CPU(asm.getRegister(), asm.getMemory());
+				} catch (Exception e) {
+					r.setIsSuccess(false);
+					return r;
+				}
         Calculator c = new Calculator(cpu, asm);
         r.setIsSuccess(c.run());
         r.setRegister(cpu);
         r.setMemory(cpu);
         return r;
     }
-
 }
