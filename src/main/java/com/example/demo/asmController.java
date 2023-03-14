@@ -80,6 +80,7 @@ public class asmController {
             if(cpu.getRip().toInt() > asm.getMnemonics().length){
                 r.setRegister(cpu);
                 r.setMemory(cpu);
+								r.setDisplay(cpu);
                 break;
             }
             counter++;

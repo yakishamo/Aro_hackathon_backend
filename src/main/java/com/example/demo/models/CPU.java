@@ -65,6 +65,7 @@ public class CPU {
 	private Rflags rflags;
 	private Register rip;
 	private Memory memory;
+	private String display;
 	
 	public Register getRip() {
 		return rip;
@@ -74,6 +75,9 @@ public class CPU {
 	}
 	public Memory getMemory() {
 		return memory;
+	}
+	public String getDisplay() {
+		return display;
 	}
 	public Register select_register(String s) {
 		if(s.matches("((r*|e*)ax)|ah|al")) {

@@ -12,14 +12,15 @@ import java.util.*;
 @Getter
 public class Result {
 
-    private ArrayList<String> register;
-    private ArrayList<String> memory;
-	private boolean isSuccess;
-	private String display;
+		private ArrayList<String> register;
+		private ArrayList<String> memory;
+		private boolean isSuccess;
+		private String display;
 	
 		Result() {
 			register = new ArrayList<String>();
 			memory = new ArrayList<String>();
+			display = "";
 		}
 
 		public void setIsSuccess(boolean b) {
@@ -61,5 +62,9 @@ public class Result {
 			for(int i = 0; i < mem.getMemorysize(); i++) {
 				memory.add(String.valueOf(mem.read(i,1)));
 			}
+		}
+
+		public void setDisplay(CPU cpu) {
+			display = cpu.getDisplay();
 		}
 }
