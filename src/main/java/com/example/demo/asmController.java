@@ -20,7 +20,7 @@ public class asmController {
         if(asm.equals("") || asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
-        
+
         String[] terms = asm.getMnemonic().split("[, ]+");
         asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
 				asm.setMnemonic(terms[0]);
@@ -41,20 +41,15 @@ public class asmController {
 
     @CrossOrigin
     @RequestMapping("/asm/all")
-    public Object allResult(@RequestBody Assembly asms){
-        if(asms == null){
+    public Object allResult(@RequestBody Assembly asm){
+        if(asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
-        
-        asms.setMnemonics(asms.getMnemonic().split("\\n"));
-        Assembly asm = new Assembly();
-        asm.setMemory(Arrays.copyOf(asms.getMemory(), asms.getMemory().length));
-        asm.setRegister(Arrays.copyOf(asms.getRegister(), asms.getRegister().length));
 
         Result r = new Result();
-        
-        for(int i=0;i<asms.getMnemonics().length;i++){
-            asm.setMnemonic(asms.getMnemonics()[i]);
+
+        for(int i=0;i<asm.getMnemonics().length;i++){
+            asm.setMnemonic(asm.getMnemonics()[i]);
 
             String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
