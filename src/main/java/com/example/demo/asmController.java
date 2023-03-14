@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import java.util.*;
 
 import com.example.demo.models.CPU;
 
@@ -12,12 +13,14 @@ import com.example.demo.models.CPU;
 public class asmController {
     @RequestMapping("/asm")
     public Result read(@RequestBody Assembly asm){
-        
-        if(asm == null){
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found"); 
+
+        if(asm.equals("") || asm == null){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
+        
         String[] terms = asm.getMnemonic().split("[, ]");
-        asm.setTerms(terms);
+        asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
+				asm.setMnemonic(terms[0]);
         CPU cpu = new CPU();
 				Result r = new Result();
         Calculator c = new Calculator(cpu, asm);
