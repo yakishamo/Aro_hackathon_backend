@@ -19,7 +19,7 @@ public class CPU {
 		r14 = new Register("14");
 		r15 = new Register("15");
 		rflags = new Rflags();
-		rip = new Register("i");
+		rip = new Register("i",1);
 		memory = new Memory(0x100);
 	}
 	public CPU(long [] reg_arr, int [] mem_arr) throws Exception{
