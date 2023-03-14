@@ -12,4 +12,5 @@ public class Assembly {
     private String[] terms;
     private long[] register;
     private int[] memory;
+    private String[] mnemonics;
 }
