@@ -26,12 +26,12 @@ public class Register {
 		return reg & (0xffffffff >>> (64-bit_size));
 	}
 
-	public int getBytesize() {
+	public int getBitsize() {
 		return bit_size;
 	}
 
 	public String toString() {
-		return String.valueOf(toInt().toUnsignedString());
+		return String.valueOf(Long.toUnsignedString(toInt()));
 	}
 
 	public Register setBitsize(int bit) {

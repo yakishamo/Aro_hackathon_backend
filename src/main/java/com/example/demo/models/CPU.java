@@ -19,7 +19,7 @@ public class CPU {
 		r14 = new Register("14");
 		r15 = new Register("15");
 		rflags = new Rflags();
-		rip = 0;
+		rip = new Register("i");
 		memory = new Memory(0x100);
 	}
 	public CPU(long [] reg_arr, int [] mem_arr) throws Exception{
@@ -40,7 +40,7 @@ public class CPU {
 		r14 = new Register("14", reg_arr[14]);
 		r15 = new Register("15", reg_arr[15]);
 		rflags = new Rflags((int)reg_arr[16]);
-		rip = reg_arr[17];
+		rip = new Register("i",reg_arr[17]);
 		memory = new Memory(0x100);
 		for(int i = 0; i < 0x100; i++) {
 			memory.write(i,1,mem_arr[i]);
@@ -63,10 +63,10 @@ public class CPU {
 	private Register r14;
 	private Register r15;
 	private Rflags rflags;
-	private long rip;
+	private Register rip;
 	private Memory memory;
 	
-	public long getRip() {
+	public Register getRip() {
 		return rip;
 	}
 	public Rflags getRflags() {

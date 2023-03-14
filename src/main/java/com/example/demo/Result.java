@@ -47,7 +47,7 @@ public class Result {
 			register.add(cpu.select_register("r14").toString());
 			register.add(cpu.select_register("r15").toString());
 			register.add(String.valueOf(cpu.getRflags().toInt()));
-			register.add(String.valueOf(cpu.getRip()));	
+			register.add(String.valueOf(cpu.getRip()));
 			}catch(Exception e) {
 				e.printStackTrace();
 				return;
