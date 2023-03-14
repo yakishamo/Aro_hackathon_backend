@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class Assembly {
     private String mnemonic;
     private String[] terms;
+    private long[] register;
+    private int[] memory;
 }
