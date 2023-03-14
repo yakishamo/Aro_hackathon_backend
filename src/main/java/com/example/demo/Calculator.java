@@ -22,6 +22,13 @@ public class Calculator {
 		regist_mnemonic(new mul());
 		regist_mnemonic(new div());
 		regist_mnemonic(new cmp());
+		regist_mnemonic(new jmp());
+		regist_mnemonic(new je());
+		regist_mnemonic(new jz());
+		regist_mnemonic(new jne());
+		regist_mnemonic(new jnz());
+		regist_mnemonic(new js());
+		regist_mnemonic(new jns());
 	}
 
 	public void regist_mnemonic(mnemonic m) {
