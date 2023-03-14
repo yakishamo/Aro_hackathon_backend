@@ -21,12 +21,14 @@ public class Calculator {
 
 	public boolean run(){
 		int list_size = mnemonic_list.size();
+		System.out.printf("list_size : %d\n", list_size);
 		for(int i = 0; i < list_size; i++) {
 			mnemonic m = mnemonic_list.get(i);
-			if(asm.getMnemonic().equals(m)) {
+			if(asm.getMnemonic().equals(m.toString())) {
 				try {
 					return m.exec(asm.getTerms(), cpu);
 				} catch (Exception e) {
+					e.printStackTrace();
 					return false;
 				}
 			}
