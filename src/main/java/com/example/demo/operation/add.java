@@ -5,7 +5,7 @@ import com.example.demo.models.Rflags;
 import java.util.*;
 
 public class add extends mnemonic {
-	add() {
+	public add() {
 		name = "add";
 	}
 	private CPU cpu;
