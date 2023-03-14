@@ -52,14 +52,13 @@ public class CPU {
 		return memory;
 	}
 	public Register select_register(String s) {
-		System.out.print(s);
 		if(s.matches("((r*|e*)ax)|ah|al")) {
 			return rax.setByName(s);
 		} else if(s.matches("((r*|e*)bx)|ah|al")) {
 			return rbx.setByName(s);
 		} else if(s.matches("((r*|e*)cx)|ch|cl")) {
 			return rcx.setByName(s);
-		} else if(s.matches("((d*|d*)dx)|dh|dl")) {
+		} else if(s.matches("((r*|e*)dx)|dh|dl")) {
 			return rdx.setByName(s);
 		} else if(s.matches("((r*|e*)si)|sil")) {
 			return rsi.setByName(s);

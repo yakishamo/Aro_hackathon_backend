@@ -10,14 +10,17 @@ import lombok.NoArgsConstructor;
 import java.util.*;
 
 @Getter
-@NoArgsConstructor
 public class Result {
 
     private ArrayList<String> register;
     private ArrayList<String> memory;
 
+		Result() {
+			register = new ArrayList<String>();
+			memory = new ArrayList<String>();
+		}
     public void setRegister(CPU cpu){
-			try {
+			try{
 			register.add(cpu.select_register("rax").toString());
 			register.add(cpu.select_register("rbx").toString());
 			register.add(cpu.select_register("rcx").toString());
@@ -36,16 +39,16 @@ public class Result {
 			register.add(cpu.select_register("r15").toString());
 			register.add(String.valueOf(cpu.getRflags().toInt()));
 			register.add(String.valueOf(cpu.getRip()));	
-			} catch (Exception e) {
-				System.out.print(cpu.select_register("rax"));
+			}catch(Exception e) {
+				e.printStackTrace();
+				return;
 			}
     }
 
     public void setMemory(CPU cpu){
 			Memory mem = cpu.getMemory();
-			System.out.print(mem);
+			String s;
 			for(int i = 0; i < mem.getMemorysize(); i++) {
-				System.out.printf(":%s", String.valueOf(mem.read(i,1)));
 				memory.add(String.valueOf(mem.read(i,1)));
 			}
 		}
