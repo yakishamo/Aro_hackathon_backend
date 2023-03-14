@@ -5,6 +5,26 @@ public class Rflags {
 		cf = pf = af = zf = sf = tf = intf = df = of = iopl_1 = iopl_2 = 
 		nt = rf = vm = ac = vif = vip = id = 0;
 	}
+	Rflags(int reg) {
+		cf = (reg >>> 0)&1;
+		pf = (reg >>> 2)&1;
+		af = (reg >>> 4)&1;
+		zf = (reg >>> 6)&1;
+		sf = (reg >>> 7)&1;
+		tf = (reg >>> 8)&1;
+		intf = (reg >>> 9)&1;
+		df = (reg >>> 10)&1;
+		of = (reg >>> 11)&1;
+		iopl_1 = (reg >>> 12)&1;
+		iopl_2 = (reg >>> 13)&1;
+		nt = (reg >>> 14)&1;
+		rf = (reg >>> 16)&1;
+		vm = (reg >>> 17)&1;
+		ac = (reg >>> 18)&1;
+		vif = (reg >>> 19)&1;
+		vip= (reg >>> 20)&1;
+		id = (reg >>> 21)&1;
+	}
 	protected int
 		cf,   //(0)�������
 		pf,   //(2)�������
@@ -97,7 +117,7 @@ public class Rflags {
 	public boolean OF() {
 		return of == 1;
 	}	
-	public int IOPL() {
+	public long IOPL() {
 		return iopl_1 & iopl_2 << 1;
 	}
 	public boolean NT() {

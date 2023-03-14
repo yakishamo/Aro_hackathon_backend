@@ -22,6 +22,30 @@ public class CPU {
 		rip = 0;
 		memory = new Memory(0x100);
 	}
+	public CPU(long [] reg_arr, int [] mem_arr) throws Exception{
+		rax = new Register("a", reg_arr[0]);
+		rbx = new Register("b", reg_arr[1]);
+		rcx = new Register("c", reg_arr[2]);
+		rdx = new Register("d", reg_arr[3]);
+		rsp = new Register("s", reg_arr[4]);
+		rbp = new Register("b", reg_arr[5]);
+		rsi = new Register("s", reg_arr[6]);
+		rdi = new Register("d", reg_arr[7]);
+		r8 = new Register("8", reg_arr[8]);
+		r9 = new Register("9", reg_arr[9]);
+		r10 = new Register("10", reg_arr[10]);
+		r11 = new Register("11", reg_arr[11]);
+		r12 = new Register("12", reg_arr[12]);
+		r13 = new Register("13", reg_arr[13]);
+		r14 = new Register("14", reg_arr[14]);
+		r15 = new Register("15", reg_arr[15]);
+		rflags = new Rflags((int)reg_arr[16]);
+		rip = reg_arr[17];
+		memory = new Memory(0x100);
+		for(int i = 0; i < 0x100; i++) {
+			memory.write(i,1,mem_arr[i]);
+		}
+	}
 	private Register rax;
 	private Register rbx;
 	private Register rcx;
