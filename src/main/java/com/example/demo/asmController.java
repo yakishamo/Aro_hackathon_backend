@@ -39,13 +39,14 @@ public class asmController {
         return r;
     }
 
+    @CrossOrigin
     @RequestMapping("/asm/all")
     public Object allResult(@RequestBody Assembly asms){
         if(asms == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
         
-        asms.setMnemonics(asms.getMnemonic().split("[\r\n]"));
+        asms.setMnemonics(asms.getMnemonic().split("[\r\n]+"));
         Assembly asm = new Assembly();
         asm.setMemory(Arrays.copyOf(asms.getMemory(), asms.getMemory().length));
         asm.setRegister(Arrays.copyOf(asms.getRegister(), asms.getRegister().length));
@@ -55,7 +56,7 @@ public class asmController {
         for(int i=0;i<asms.getMnemonics().length;i++){
             asm.setMnemonic(asms.getMnemonics()[i]);
 
-            String[] terms = asm.getMnemonic().split("[, ]");
+            String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
                     asm.setMnemonic(terms[0]);
                     CPU cpu;
