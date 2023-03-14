@@ -19,7 +19,7 @@ public class sub extends mnemonic {
 		Rflags f = cpu.getRflags();
 		if(res == 0) f.setZF(true);
 		else f.setZF(false);
-		if((res >>> (reg.getBytesize()-1)) == 1) f.setSF(true);
+		if((res >>> (reg.getBitsize()-1)) == 1) f.setSF(true);
 		else f.setSF(false);
 		return true;
 	}
@@ -32,7 +32,7 @@ public class sub extends mnemonic {
 		Rflags f = cpu.getRflags();
 		if(res == 0) f.setZF(true);
 		else f.setZF(false);
-		if((res >>> (reg1.getBytesize()-1)) == 1) f.setSF(true);
+		if((res >>> (reg1.getBitsize()-1)) == 1) f.setSF(true);
 		else f.setSF(false);
 		return true;
 	}
