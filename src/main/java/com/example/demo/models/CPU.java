@@ -82,6 +82,8 @@ public class CPU {
 			return rbx.setByName(s);
 		} else if(s.matches("((r*|e*)cx)|ch|cl")) {
 			return rcx.setByName(s);
+		} else if(s.matches("((r*|e*)bx)|bh|bl")) {
+			return rcx.setByName(s);
 		} else if(s.matches("((r*|e*)dx)|dh|dl")) {
 			return rdx.setByName(s);
 		} else if(s.matches("((r*|e*)si)|sil")) {

@@ -2,8 +2,7 @@ package com.example.demo;
 
 import com.example.demo.models.CPU;
 import com.example.demo.operation.mnemonic;
-import com.example.demo.operation.add;
-import com.example.demo.operation.nop;
+import com.example.demo.operation.*;
 import java.util.*;
 
 public class Calculator {
@@ -18,6 +17,8 @@ public class Calculator {
 		regist_mnemonic(new nop());
 		regist_mnemonic(new add());
 		regist_mnemonic(new sub());
+		regist_mnemonic(new mov());
+		regist_mnemonic(new xchg());
 	}
 
 	public void regist_mnemonic(mnemonic m) {
