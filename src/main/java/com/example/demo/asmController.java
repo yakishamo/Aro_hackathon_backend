@@ -39,6 +39,7 @@ public class asmController {
         return r;
     }
 
+    @CrossOrigin
     @RequestMapping("/asm/all")
     public Object allResult(@RequestBody Assembly asms){
         if(asms == null){
