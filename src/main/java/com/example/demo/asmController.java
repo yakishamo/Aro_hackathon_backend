@@ -39,6 +39,7 @@ public class asmController {
         r.setIsSuccess(c.run());
         r.setRegister(cpu);
         r.setMemory(cpu);
+				r.setDisplay(cpu);
         return r;
     }
 

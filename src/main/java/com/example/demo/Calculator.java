@@ -29,6 +29,7 @@ public class Calculator {
 		regist_mnemonic(new jnz());
 		regist_mnemonic(new js());
 		regist_mnemonic(new jns());
+		regist_mnemonic(new syscall());
 	}
 
 	public void regist_mnemonic(mnemonic m) {

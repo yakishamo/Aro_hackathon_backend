@@ -21,6 +21,7 @@ public class CPU {
 		rflags = new Rflags();
 		rip = new Register("i",1);
 		memory = new Memory(0x100);
+		display = "";
 	}
 	public CPU(long [] reg_arr, int [] mem_arr) throws Exception{
 		rax = new Register("a", reg_arr[0]);
@@ -45,6 +46,7 @@ public class CPU {
 		for(int i = 0; i < 0x100; i++) {
 			memory.write(i,1,mem_arr[i]);
 		}
+		display = "";
 	}
 	private Register rax;
 	private Register rbx;
@@ -78,6 +80,9 @@ public class CPU {
 	}
 	public String getDisplay() {
 		return display;
+	}
+	public void setDisplay(String s) {
+		display = s;
 	}
 	public Register select_register(String s) {
 		if(s.matches("((r*|e*)ax)|ah|al")) {
