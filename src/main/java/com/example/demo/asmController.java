@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,7 @@ import com.example.demo.models.CPU;
 
 @RestController
 public class asmController {
-    @RequestMapping("/asm")
+    @PostMapping("/asm")
     public Result read(@RequestBody Assembly asm){
 				System.out.printf("in Result\n");
         if(asm.equals("") || asm == null){
