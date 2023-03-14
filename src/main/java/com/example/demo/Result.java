@@ -16,11 +16,13 @@ public class Result {
 		private ArrayList<String> memory;
 		private boolean isSuccess;
 		private String display;
+		private String error_message;
 	
 		Result() {
 			register = new ArrayList<String>();
 			memory = new ArrayList<String>();
 			display = "";
+			error_message = "";
 		}
 
 		public void setIsSuccess(boolean b) {
@@ -66,5 +68,9 @@ public class Result {
 
 		public void setDisplay(CPU cpu) {
 			display = cpu.getDisplay();
+		}
+
+		public void setError_message(String s) {
+			error_message = s;
 		}
 }

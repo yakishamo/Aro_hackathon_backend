@@ -33,10 +33,13 @@ public class asmController {
         	cpu = new CPU(asm.getRegister(), asm.getMemory(), asm.getDisplay());
 				} catch (Exception e) {
 					r.setIsSuccess(false);
+					r.setError_message("仮想CPUの初期化に失敗しました。");
 					return r;
 				}
         Calculator c = new Calculator(cpu, asm);
-        r.setIsSuccess(c.run());
+				boolean isSuccess = c.run();
+        r.setIsSuccess(isSuccess);
+				if(!isSuccess) r.setError_message("命令の実行に失敗しました。");
         r.setRegister(cpu);
         r.setMemory(cpu);
 				r.setDisplay(cpu);
@@ -68,15 +71,15 @@ public class asmController {
             asm.setMnemonic(asm.getMnemonics()[row-1]);
             cpu.getRip().setVal(row+1);
 
-
             String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
             asm.setMnemonic(terms[0]);
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
             if(r.getIsSuccess() == false){
-                
-                throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "構文エラー");
+							r.setError_message(String.format("%d: 命令の実行に失敗しました。", row));
+							return r;
+              //  throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "構文エラー");
             }
             if(cpu.getRip().toInt() > asm.getMnemonics().length){
                 r.setRegister(cpu);

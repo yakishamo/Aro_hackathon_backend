@@ -47,6 +47,9 @@ public class CPU {
 			memory.write(i,1,mem_arr[i]);
 		}
 		this.display = display;
+		if(display == null) {
+			this.display = "";
+		}
 	}
 	private Register rax;
 	private Register rbx;
