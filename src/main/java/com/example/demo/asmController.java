@@ -56,7 +56,7 @@ public class asmController {
         for(int i=0;i<asms.getMnemonics().length;i++){
             asm.setMnemonic(asms.getMnemonics()[i]);
 
-            String[] terms = asm.getMnemonic().split("[, ]");
+            String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
                     asm.setMnemonic(terms[0]);
                     CPU cpu;
