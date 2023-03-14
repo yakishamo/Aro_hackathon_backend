@@ -17,6 +17,7 @@ public class Calculator {
 		mnemonic_list = new ArrayList<mnemonic>();
 		regist_mnemonic(new nop());
 		regist_mnemonic(new add());
+		regist_mnemonic(new sub());
 	}
 
 	public void regist_mnemonic(mnemonic m) {
