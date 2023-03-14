@@ -71,8 +71,6 @@ public class asmController {
             String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
             asm.setMnemonic(terms[0]);
-            System.out.println("成功:"+counter);
-            System.out.println("ripの値:"+row);
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
             if(r.getIsSuccess() == false){
