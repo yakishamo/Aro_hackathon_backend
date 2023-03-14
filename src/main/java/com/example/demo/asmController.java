@@ -46,7 +46,7 @@ public class asmController {
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
         
-        asms.setMnemonics(asms.getMnemonic().split("[\\n]+"));
+        asms.setMnemonics(asms.getMnemonic().split("\\n"));
         Assembly asm = new Assembly();
         asm.setMemory(Arrays.copyOf(asms.getMemory(), asms.getMemory().length));
         asm.setRegister(Arrays.copyOf(asms.getRegister(), asms.getRegister().length));
