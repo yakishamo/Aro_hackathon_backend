@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,7 @@ public class asmController {
     @RequestMapping("/asm")
     public Result read(@RequestBody Assembly asm){
         
-        if(asm.equals("") || asm == null){
+        if(asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found"); 
         }
         String[] terms = asm.getMnemonic().split("[, ]");
