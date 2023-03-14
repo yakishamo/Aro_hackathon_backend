@@ -11,7 +11,7 @@ import com.example.demo.models.CPU;
 
 @RestController
 public class asmController {
-    @RequestMapping("/asm/")
+    @RequestMapping("/asm")
     public Result read(@RequestBody Assembly asm){
         
         if(asm.equals("") || asm == null){
