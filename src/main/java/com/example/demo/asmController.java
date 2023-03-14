@@ -35,4 +35,16 @@ public class asmController {
         r.setMemory(cpu);
         return r;
     }
+
+    @RequestMapping("/asm/all")
+    public Object allResult(@RequestBody Assembly asm){
+        if(asm == null){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
+        }
+        
+        asm.setMnemonics(asm.getMnemonic().split("[\r\n]"));
+               
+        return asm;
+    }
+
 }
