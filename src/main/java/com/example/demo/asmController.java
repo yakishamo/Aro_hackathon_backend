@@ -13,6 +13,9 @@ import com.example.demo.models.CPU;
 
 @RestController
 public class asmController {
+
+    static final int MAX = 1000;
+
     @CrossOrigin
     @PostMapping("/asm")
     public Result read(@RequestBody Assembly asm){
@@ -47,30 +50,39 @@ public class asmController {
         }
 
         Result r = new Result();
+        CPU cpu;
+        try {
+            cpu = new CPU(asm.getRegister(), asm.getMemory());
+        } catch (Exception e) {
+            r.setIsSuccess(false);
+            return r;
+        }
+        int counter = 0;
+        int row =(int) cpu.getRip().setVal(1).toInt();
+        while(true){
+            if(counter >= 1000){
+                break;
+            }
+            asm.setMnemonic(asm.getMnemonics()[row]);
+            row = (int) cpu.getRip().setVal(row++).toInt();
 
-        for(int i=0;i<asm.getMnemonics().length;i++){
-            asm.setMnemonic(asm.getMnemonics()[i]);
 
             String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
-                    asm.setMnemonic(terms[0]);
-                    CPU cpu;
-                    try {
-                cpu = new CPU(asm.getRegister(), asm.getMemory());
-                    } catch (Exception e) {
-                        r.setIsSuccess(false);
-                        return r;
-                    }
+            asm.setMnemonic(terms[0]);
+
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
             if(r.getIsSuccess() == false){
                 break;
             }
-            if(i == asm.getMnemonics().length-1){
+            if(row >= asm.getMnemonics().length){
                 r.setRegister(cpu);
                 r.setMemory(cpu);
-                    
+                break;
             }
+            counter++;
+
         }
         return r;
     }
