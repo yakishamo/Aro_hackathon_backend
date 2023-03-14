@@ -53,7 +53,7 @@ public class asmController {
         Result r = new Result();
         CPU cpu;
         try {
-            cpu = new CPU(asm.getRegister(), asm.getMemory(), asm.getDisplay());
+            cpu = new CPU(asm.getRegister(), asm.getMemory(), "");
         } catch (Exception e) {
             r.setIsSuccess(false);
             return r;
