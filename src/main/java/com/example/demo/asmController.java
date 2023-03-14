@@ -39,6 +39,6 @@ public class asmController {
         
         asm.setMnemonics(asm.getMnemonic().split("[\r\n]"));
                
-        return null;
+        return asm;
     }
 }
