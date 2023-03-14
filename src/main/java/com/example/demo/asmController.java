@@ -61,7 +61,7 @@ public class asmController {
         int row =(int) cpu.getRip().setVal(1).toInt();
         while(true){
             if(counter >= 1000){
-                break;
+                throw  new ResponseStatusException(HttpStatus.REQUEST_TIMEOUT, "実行回数が制限を超えています。");
             }
             row = (int)cpu.getRip().toInt();
             asm.setMnemonic(asm.getMnemonics()[row-1]);
