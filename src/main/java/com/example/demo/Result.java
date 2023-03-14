@@ -6,17 +6,19 @@ import com.example.demo.models.Memory;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.*;
 
 @Getter
+@Setter
 public class Result {
 
     private ArrayList<String> register;
     private ArrayList<String> memory;
 	private boolean isSuccess;
 	private String display;
-	
+
 		Result() {
 			register = new ArrayList<String>();
 			memory = new ArrayList<String>();

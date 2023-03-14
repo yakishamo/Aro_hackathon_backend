@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
@@ -42,7 +41,7 @@ public class asmController {
     }
 
     @CrossOrigin
-    @RequestMapping("/asm/all")
+    @PostMapping("/asm/all")
     public Object allResult(@RequestBody Assembly asm){
         if(asm == null){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
@@ -84,6 +83,10 @@ public class asmController {
             counter++;
 
         }
+        if(r.getDisplay() == null){
+            r.setDisplay("hello world");
+        }
+
         return r;
     }
 
