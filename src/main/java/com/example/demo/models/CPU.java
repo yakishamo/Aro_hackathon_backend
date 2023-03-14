@@ -78,11 +78,9 @@ public class CPU {
 	public Register select_register(String s) {
 		if(s.matches("((r*|e*)ax)|ah|al")) {
 			return rax.setByName(s);
-		} else if(s.matches("((r*|e*)bx)|ah|al")) {
+		} else if(s.matches("((r*|e*)bx)|bh|bl")) {
 			return rbx.setByName(s);
 		} else if(s.matches("((r*|e*)cx)|ch|cl")) {
-			return rcx.setByName(s);
-		} else if(s.matches("((r*|e*)bx)|bh|bl")) {
 			return rcx.setByName(s);
 		} else if(s.matches("((r*|e*)dx)|dh|dl")) {
 			return rdx.setByName(s);
