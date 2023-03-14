@@ -1,11 +1,9 @@
 package com.example.demo;
 
 import com.example.demo.models.CPU;
-import com.example.demo.models.Register;
 import com.example.demo.models.Memory;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.*;
