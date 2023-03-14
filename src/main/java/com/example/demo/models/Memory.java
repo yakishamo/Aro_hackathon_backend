@@ -25,6 +25,9 @@ public class Memory {
 	public void write(int addr, int size, long data) throws ArrayIndexOutOfBoundsException {
 		byte write_data;
 		int i = 0;
+		if(data == 0) {
+			memory[addr] = 0;
+		}
 		while(data != 0 && i < size) {
 			write_data = (byte)(data & 0xff);
 			data = data >>> 8;
