@@ -24,10 +24,8 @@ public class syscall extends mnemonic {
 		for(int i = 0; i < rdx; i++) {
 			ascii[i] = (byte)mem.read(rsi+i, 1);
 		}
-		System.out.println(ascii[0]);
 		try {
-			System.out.println(new String(ascii, "US-ASCII"));
-			cpu.setDisplay(new String(ascii, "US-ASCII"));
+			cpu.addDisplay(new String(ascii, "US-ASCII"));
 		} catch (Exception e) {
 			return false;
 		}
