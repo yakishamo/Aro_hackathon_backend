@@ -63,20 +63,22 @@ public class asmController {
             if(counter >= 1000){
                 break;
             }
-            asm.setMnemonic(asm.getMnemonics()[row]);
-            row = (int) cpu.getRip().setVal(row++).toInt();
+            row = (int)cpu.getRip().toInt();
+            asm.setMnemonic(asm.getMnemonics()[row-1]);
+            cpu.getRip().setVal(row+1);
 
 
             String[] terms = asm.getMnemonic().split("[, ]+");
             asm.setTerms(Arrays.copyOfRange(terms, 1, terms.length));
             asm.setMnemonic(terms[0]);
-
+            System.out.println("成功:"+counter);
+            System.out.println("ripの値:"+row);
             Calculator c = new Calculator(cpu, asm);
             r.setIsSuccess(c.run());
             if(r.getIsSuccess() == false){
                 break;
             }
-            if(row >= asm.getMnemonics().length){
+            if(cpu.getRip().toInt() > asm.getMnemonics().length){
                 r.setRegister(cpu);
                 r.setMemory(cpu);
                 break;
