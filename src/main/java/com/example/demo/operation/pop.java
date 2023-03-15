@@ -19,7 +19,7 @@ public class pop extends mnemonic {
 		}
 		Register rsp = cpu.select_register("rsp");
 		reg.setVal(cpu.getMemory().read((int)rsp.toInt(), byte_size));
-		rsp.setVal(rsp.toInt() - byte_size);
+		rsp.setVal(rsp.toInt() + byte_size);
 		return true;
 	}
 }
