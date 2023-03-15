@@ -18,7 +18,7 @@ public class push extends mnemonic {
 			return false;
 		}
 		Register rsp = cpu.select_register("rsp");
-		rsp.setVal(rsp.toInt() + byte_size);
+		rsp.setVal(rsp.toInt() - byte_size);
 		cpu.getMemory().write((int)rsp.toInt(), byte_size, reg.toInt());
 		return true;
 	}
